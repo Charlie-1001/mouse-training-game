@@ -97,11 +97,14 @@ class RightClickTank extends Phaser.Physics.Arcade.Sprite {
   }
 
   reloadBombs() {
+    if (this.scene.shapesDropped === 0) {
+      this.isReloading = true;
+      this.canShoot = false;
+    }
+
     if (this.isReloading) {
       this.tankTop.setFrame(2);
     }
-
-    if (this.scene.shapesDropped === 0) this.isReloading = true;
 
     if (this.scene.shapesDropped) {
       this.isReloading = false;
