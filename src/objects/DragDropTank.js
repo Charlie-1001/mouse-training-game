@@ -99,11 +99,14 @@ class DragDropTank extends Phaser.Physics.Arcade.Sprite {
   }
 
   reloadBombs() {
+    if (this.scene.shapesDropped === 0) {
+      this.isReloading = true;;
+      this.canShoot = false;
+    };
+
     if (this.isReloading) {
       this.tankTop.setFrame(2);
     }
-
-    if (this.scene.shapesDropped === 0) this.isReloading = true;
 
     if (this.scene.shapesDropped) {
       this.isReloading = false;
@@ -134,6 +137,8 @@ class DragDropTank extends Phaser.Physics.Arcade.Sprite {
     target.isTracked = true;
 
     this.scene.time.delayedCall(500, () => {
+      target.isTracked = false;
+      if (!target.active) return;
       this.tracking(target);
       this.createAndShootBomb(this.scene.bombs);
     })

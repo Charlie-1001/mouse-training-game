@@ -1,5 +1,7 @@
 import {defineConfig} from 'vite';
 
-export default defineConfig({
-  base: '/eduplayground/gameSources/mouse-training-game/'
+export default defineConfig(({command}) => {
+  return {
+    base: command === 'serve' ? '/' : '/eduplayground/gameSources/mouse-training-game/'
+  }
 })

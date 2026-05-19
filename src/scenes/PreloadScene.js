@@ -8,9 +8,22 @@ class PreloadScene extends Phaser.Scene {
   }
 
   preload() {
+    // loading UI
+    this.load.image('triggerSceneBg', 'assets/trigger-scene-bg.png');
+    this.add.image(0, 0, 'triggerSceneBg').setOrigin(0, 0);
+    this.loadingText = this.add.text(400, 500, 'Loading 0%', {fontSize: 48, fontStyle: 'bold', color: 'blue'}).setOrigin(0.5);
+
+    this.load.on('progress', (value) => {
+      this.loadingText.setText(`Loading ${Math.round(value * 100)}%`);
+    });
+
+    this.load.on('complete', () => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.time.delayedCall(1000, () => this.scene.start('HomeScene'));
+    });
+
     // backgrounds
     this.load.image('gameBg', 'assets/game-bg.png');
-    this.load.image('triggerSceneBg', 'assets/trigger-scene-bg.png');
     this.load.image('homeSceneBg', 'assets/home-scene-bg.png');
     this.load.image('clickMoveMenuBg', 'assets/click-move-scene-bg.png');
     this.load.image('dragDropMenuBg', 'assets/drag-drop-scene-bg.png');
@@ -83,27 +96,6 @@ class PreloadScene extends Phaser.Scene {
     this.load.audio('explosionSound', 'assets/audios/eff-tank-shooting-distant.mp3');
     this.load.audio('gameOverSound', 'assets/audios/eff-failure-ending.wav');
     this.load.audio('victorySound', 'assets/audios/eff-victory-ending.wav');
-
-    // loading on complete
-    this.load.on('progress', (time) => this.loadingPercent = time);
-    this.load.on('complete', () => {
-      this.cameras.main.fadeOut(1000, 0, 0, 0);
-      this.time.delayedCall(1000, () => this.scene.start('HomeScene'));
-    });
-  }
-
-  create() {
-    this.add.image(0, 0, 'triggerSceneBg').setOrigin(0, 0);
-    this.loadingText = this.add.text(400, 500, 'Loading 0%', {fontSize: 48, fontStyle: 'bold', color: 'blue'}).setOrigin(0.5);
-  }
-
-  updateLoadingProgress() {
-    const percentage = Math.round(this.loadingPercent * 100);
-    this.loadingText.setText(`Loading ${percentage}%`);
-  }
-
-  update() {
-    this.updateLoadingProgress();
   }
 }
 

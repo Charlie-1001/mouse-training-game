@@ -39,7 +39,6 @@ class RightClickScene extends BaseScene {
     this.ballCreationTimer.remove();
     this.shapesDropped = 0;
     this.shapes.updateShapesDropped();
-    console.log('reset!');
   }
 
   emitHudData() {
