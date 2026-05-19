@@ -41,7 +41,6 @@ class DragDropScene extends BaseScene {
     this.totalDrops = 0;
     this.shapesDropped = 0;
     this.shapes.updateShapesDropped();
-    console.log('reset!');
   }
 
   emitHudData() {

@@ -54,7 +54,6 @@ class ClickMoveTank extends Phaser.Physics.Arcade.Sprite {
       bomb.setVelocity(dx * this.bombSpeed, dy * this.bombSpeed);
       this.remainingBombs--;
       this.removeBombs(bomb);
-      console.log(this.remainingBombs);
     }
   }
 
