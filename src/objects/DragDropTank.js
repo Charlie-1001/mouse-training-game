@@ -100,9 +100,9 @@ class DragDropTank extends Phaser.Physics.Arcade.Sprite {
 
   reloadBombs() {
     if (this.scene.shapesDropped === 0) {
-      this.isReloading = true;;
+      this.isReloading = true;
       this.canShoot = false;
-    };
+    }
 
     if (this.isReloading) {
       this.tankTop.setFrame(2);
