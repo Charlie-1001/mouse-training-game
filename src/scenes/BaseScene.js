@@ -11,11 +11,11 @@ class BaseScene extends Phaser.Scene {
       wave3: {balls: 10},
       wave4: {balls: 10},
       wave5: {balls: 10},
-      wave6: {balls: 10},
-      wave7: {balls: 10},
-      wave8: {balls: 10},
-      wave9: {balls: 10},
-      wave10: {balls: 10},
+      wave6: {balls: 15},
+      wave7: {balls: 20},
+      wave8: {balls: 25},
+      wave9: {balls: 30},
+      wave10: {balls: 35},
     }
   }
 
@@ -78,13 +78,13 @@ class BaseScene extends Phaser.Scene {
         } else if (wave === 6) {
           this.ball.shrinkingBalls({group: this.balls, shrinkDelay: 20});
         } else if (wave === 7) {
-          this.ball.dropBalls({group: this.balls, speed: 100});
-        } else if (wave === 8) {
           this.ball.dropBalls({group: this.balls, speed: 150});
-        } else if (wave === 9) {
-          this.ball.dropBalls({group: this.balls, speed: 250});
-        } else if (wave === 10) {
+        } else if (wave === 8) {
           this.ball.dropBalls({group: this.balls, speed: 300});
+        } else if (wave === 9) {
+          this.ball.dropBalls({group: this.balls, speed: 350});
+        } else if (wave === 10) {
+          this.ball.dropBalls({group: this.balls, speed: 400});
         }
 
         this.createdBalls++;
