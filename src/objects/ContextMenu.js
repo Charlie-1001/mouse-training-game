@@ -40,14 +40,17 @@ class ContextMenu {
 
       shapeImage.setInteractive({useHandCursor: true});
       shapeImage.setData('shapeId', shape.getData('shapeId'));
-      shapeImage.on('pointerdown', () => {
-        if (shapeImage.getData('shapeId') === sprite.getData('shapeId')) {
-          sprite.setTexture(shapeImage.texture.key);
-          this.scene.shapes.toggleRightClickImage(sprite, false); // hide the rigt click placeholder image
-          sprite.isDropped = true;
-          this.scene.shapesDropped += this.scene.shapes.bombsPerShape;
-          this.scene.rightClickDuration += this.scene.time.now - sprite.clickStartTime;
-          this.scene.correctClick++;
+      shapeImage.on('pointerdown', (pointer) => {
+        // if (pointer.rightBtnDown()) return; // ignore right clicks on the menu
+        if (pointer.leftButtonDown()) {
+          if (shapeImage.getData('shapeId') === sprite.getData('shapeId')) {
+            sprite.setTexture(shapeImage.texture.key);
+            this.scene.shapes.toggleRightClickImage(sprite, false); // hide the rigt click placeholder image
+            sprite.isDropped = true;
+            this.scene.shapesDropped += this.scene.shapes.bombsPerShape;
+            this.scene.rightClickDuration += this.scene.time.now - sprite.clickStartTime;
+            this.scene.correctClick++;
+          }
         }
 
         this.scene.emitHudData();

@@ -7,11 +7,11 @@ class BaseScene extends Phaser.Scene {
     super(key);
     this.waves = {
       wave1: {balls: 10},
-      wave2: {balls: 10},
-      wave3: {balls: 10},
-      wave4: {balls: 10},
-      wave5: {balls: 10},
-      wave6: {balls: 15},
+      wave2: {balls: 20},
+      wave3: {balls: 20},
+      wave4: {balls: 20},
+      wave5: {balls: 20},
+      wave6: {balls: 20},
       wave7: {balls: 20},
       wave8: {balls: 25},
       wave9: {balls: 30},
