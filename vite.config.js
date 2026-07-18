@@ -1,7 +1,7 @@
 import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react';
 
-export default defineConfig(({command}) => {
-  return {
-    base: command === 'serve' ? '/' : '/eduplayground/gameSources/ict-games/mouse-training-game/'
-  }
+export default defineConfig({
+  plugins: [react()],
+  base: '/mouse-training-game/'
 })
