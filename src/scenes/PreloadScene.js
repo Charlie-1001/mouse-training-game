@@ -32,6 +32,9 @@ class PreloadScene extends Phaser.Scene {
     this.load.image('menuEmptyBg', 'assets/menu-empty-bg.png');
     this.load.image('gameOverBg', 'assets/game-over-bg.png');
     this.load.image('victoryBg', 'assets/victory-bg.png');
+    this.load.image('resumeClickMove', 'assets/resume-click-move-bg.png');
+    this.load.image('resumeDragDrop', 'assets/resume-drag-drop-bg.png');
+    this.load.image('resumeRightClick', 'assets/resume-right-click-bg.png');
 
     // title text
     this.load.image('clickMoveText', 'assets/click-move-text.png');
@@ -45,11 +48,12 @@ class PreloadScene extends Phaser.Scene {
     this.load.image('rightClickThumbnail', 'assets/right-click-thumbnail.png');
     this.load.image('pauseBtn', 'assets/pause-btn.png');
     this.load.image('playBtn', 'assets/play-btn.png');
-    this.load.image('homeTextBtn', 'assets/home-text-btn.png');
-    this.load.image('bestScoreTextBtn', 'assets/best-score-text-btn.png');
-    this.load.image('playTextBtn', 'assets/play-text-btn.png');
-    this.load.image('resumeTextBtn', 'assets/resume-text-btn.png');
-    this.load.image('playAgainTextBtn', 'assets/play-again-text-btn.png');
+    this.load.image('homeTextBtn', 'assets/menu-home-btn.png');
+    this.load.image('bestScoreTextBtn', 'assets/menu-statistics-btn.png');
+    this.load.image('playTextBtn', 'assets/menu-play-btn.png');
+    this.load.image('resumeTextBtn', 'assets/menu-play-btn.png');
+    this.load.image('playAgainTextBtnGreen', 'assets/menu-retry-green-btn.png');
+    this.load.image('playAgainTextBtnBlack', 'assets/menu-retry-black-btn.png');
     this.load.image('backBtn', 'assets/back-btn.png');
     this.load.image('clickMoveScoreBtn', 'assets/click-move-score-btn.png');
     this.load.image('dragDropScoreBtn', 'assets/drag-drop-score-btn.png');

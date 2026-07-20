@@ -12,9 +12,9 @@ class PauseScene extends BaseScene {
 
   create() {
     const bgImages = {
-      ClickMoveScene: 'clickMoveMenuBg',
-      DragDropScene: 'dragDropMenuBg',
-      RightClickScene: 'rightClickMenuBg',
+      ClickMoveScene: 'resumeClickMove',
+      DragDropScene: 'resumeDragDrop',
+      RightClickScene: 'resumeRightClick',
     }
 
     this.add.image(0, 0, bgImages[this.currentScene]).setOrigin(0, 0);

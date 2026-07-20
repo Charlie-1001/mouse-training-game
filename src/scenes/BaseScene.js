@@ -193,7 +193,8 @@ class BaseScene extends Phaser.Scene {
   createMenu({sceneToCreate, sceneToPlay, sceneToResume}) {
     const btnFunctions = {
       playTextBtn: () => this.scene.start(sceneToPlay),
-      playAgainTextBtn: () => this.scene.start(sceneToPlay),
+      playAgainTextBtnGreen: () => this.scene.start(sceneToPlay),
+      playAgainTextBtnBlack: () => this.scene.start(sceneToPlay),
       bestScoreTextBtn: () => this.scene.start('BestScoreScene', {currentScene: sceneToCreate}),
       homeTextBtn: () => this.goToHomeScene(sceneToResume),
       resumeTextBtn: () => this.resumeScene(sceneToResume),
@@ -224,11 +225,11 @@ class BaseScene extends Phaser.Scene {
       },
       GameOverScene: {
         background: 'gameOverBg',
-        buttons: ['playAgainTextBtn', 'bestScoreTextBtn', 'homeTextBtn'],
+        buttons: ['playAgainTextBtnGreen', 'bestScoreTextBtn', 'homeTextBtn'],
       },
       VictoryScene: {
         background: 'victoryBg',
-        buttons: ['playAgainTextBtn', 'bestScoreTextBtn', 'homeTextBtn'],
+        buttons: ['playAgainTextBtnBlack', 'bestScoreTextBtn', 'homeTextBtn'],
       },
     };
 
@@ -236,9 +237,9 @@ class BaseScene extends Phaser.Scene {
     const currentBg = currentScene.background;
 
     if (currentBg) this.add.image(0, 0, currentScene.background).setOrigin(0, 0);
-    let currentY = 200;
+    let currentY = 220;
     let prevHeight = 0;
-    const spacing = 20;
+    const spacing = sceneToCreate === "HomeScene" ? 20 : 60;
 
     currentScene.buttons.forEach(btn => {
       currentY += prevHeight === 0 ? 0 : prevHeight + spacing;
