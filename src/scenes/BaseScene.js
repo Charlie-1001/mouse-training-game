@@ -193,19 +193,20 @@ class BaseScene extends Phaser.Scene {
   createMenu({sceneToCreate, sceneToPlay, sceneToResume}) {
     const btnFunctions = {
       playTextBtn: () => this.scene.start(sceneToPlay),
-      playAgainTextBtnGreen: () => this.scene.start(sceneToPlay),
-      playAgainTextBtnBlack: () => this.scene.start(sceneToPlay),
+      retryBtn: () => this.scene.start(sceneToPlay),
+      playAgainBtn: () => this.scene.start(sceneToPlay),
       bestScoreTextBtn: () => this.scene.start('BestScoreScene', {currentScene: sceneToCreate}),
       homeTextBtn: () => this.goToHomeScene(sceneToResume),
       resumeTextBtn: () => this.resumeScene(sceneToResume),
       clickMoveThumbnail: () => this.scene.start('ClickMoveMenu'),
       dragDropThumbnail: () => this.scene.start('DragDropMenu'),
       rightClickThumbnail: () => this.scene.start('RightClickMenu'),
+      exitBtn: () => window.location.reload(),
     };
     const menuData = {
       HomeScene: {
         background: 'homeSceneBg',
-        buttons: ['clickMoveThumbnail', 'dragDropThumbnail', 'rightClickThumbnail'],
+        buttons: ['clickMoveThumbnail', 'dragDropThumbnail', 'rightClickThumbnail', 'exitBtn'],
       },
       ClickMoveMenu: {
         background: 'clickMoveMenuBg',
@@ -225,11 +226,11 @@ class BaseScene extends Phaser.Scene {
       },
       GameOverScene: {
         background: 'gameOverBg',
-        buttons: ['playAgainTextBtnGreen', 'bestScoreTextBtn', 'homeTextBtn'],
+        buttons: ['retryBtn', 'bestScoreTextBtn', 'homeTextBtn'],
       },
       VictoryScene: {
         background: 'victoryBg',
-        buttons: ['playAgainTextBtnBlack', 'bestScoreTextBtn', 'homeTextBtn'],
+        buttons: ['playAgainBtn', 'bestScoreTextBtn', 'homeTextBtn'],
       },
     };
 
@@ -237,16 +238,17 @@ class BaseScene extends Phaser.Scene {
     const currentBg = currentScene.background;
 
     if (currentBg) this.add.image(0, 0, currentScene.background).setOrigin(0, 0);
-    let currentY = 220;
+    let currentY = sceneToCreate === 'HomeScene' ? 150 : 220;
     let prevHeight = 0;
-    const spacing = sceneToCreate === "HomeScene" ? 20 : 60;
+    const spacing = 20;
 
     currentScene.buttons.forEach(btn => {
       currentY += prevHeight === 0 ? 0 : prevHeight + spacing;
 
       const button = this.add.image(400, currentY, btn)
         .setInteractive({useHandCursor: true})
-        .on('pointerdown', btnFunctions[btn]);
+        .on('pointerup', btnFunctions[btn])
+        .setOrigin(0.5, 0);
       prevHeight = button.height;
     })
   }

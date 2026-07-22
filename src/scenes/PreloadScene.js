@@ -19,7 +19,7 @@ class PreloadScene extends Phaser.Scene {
 
     this.load.on('complete', () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0);
-      this.time.delayedCall(1000, () => this.scene.start('HomeScene'));
+      this.time.delayedCall(1000, () => this.scene.start('VictoryScene'));
     });
 
     // backgrounds
@@ -32,9 +32,6 @@ class PreloadScene extends Phaser.Scene {
     this.load.image('menuEmptyBg', 'assets/menu-empty-bg.png');
     this.load.image('gameOverBg', 'assets/game-over-bg.png');
     this.load.image('victoryBg', 'assets/victory-bg.png');
-    this.load.image('resumeClickMove', 'assets/resume-click-move-bg.png');
-    this.load.image('resumeDragDrop', 'assets/resume-drag-drop-bg.png');
-    this.load.image('resumeRightClick', 'assets/resume-right-click-bg.png');
 
     // title text
     this.load.image('clickMoveText', 'assets/click-move-text.png');
@@ -52,13 +49,13 @@ class PreloadScene extends Phaser.Scene {
     this.load.image('bestScoreTextBtn', 'assets/menu-statistics-btn.png');
     this.load.image('playTextBtn', 'assets/menu-play-btn.png');
     this.load.image('resumeTextBtn', 'assets/menu-play-btn.png');
-    this.load.image('playAgainTextBtnGreen', 'assets/menu-retry-green-btn.png');
-    this.load.image('playAgainTextBtnBlack', 'assets/menu-retry-black-btn.png');
+    this.load.image('retryBtn', 'assets/menu-retry-btn.png');
+    this.load.image('playAgainBtn', 'assets/menu-play-again-btn.png');
     this.load.image('backBtn', 'assets/back-btn.png');
     this.load.image('clickMoveScoreBtn', 'assets/click-move-score-btn.png');
     this.load.image('dragDropScoreBtn', 'assets/drag-drop-score-btn.png');
     this.load.image('rightClickScoreBtn', 'assets/right-click-score-btn.png');
-    this.load.image('closeBtn', 'assets/close-btn.png');
+    this.load.image('exitBtn', 'assets/menu-exit-btn.png');
 
     // objects
     this.load.image('tankBase', 'assets/tank-base.png');
