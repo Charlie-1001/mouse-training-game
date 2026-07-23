@@ -19,7 +19,7 @@ class PreloadScene extends Phaser.Scene {
 
     this.load.on('complete', () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0);
-      this.time.delayedCall(1000, () => this.scene.start('VictoryScene'));
+      this.time.delayedCall(1000, () => this.scene.start('HomeScene'));
     });
 
     // backgrounds
